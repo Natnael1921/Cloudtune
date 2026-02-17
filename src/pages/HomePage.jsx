@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
+
+
 const topArtist = [
   {
     poster: "public/Eminem.jpg",
@@ -54,8 +56,8 @@ export function HomePage({
   function handleLikeButton(id) {
     setMusics((prevMusics) =>
       prevMusics.map((music) =>
-        music.id === id ? { ...music, liked: !music.liked } : music
-      )
+        music.id === id ? { ...music, liked: !music.liked } : music,
+      ),
     );
   }
 
@@ -70,8 +72,8 @@ export function HomePage({
           const searchQuery = query || defaultQuery;
           const res = await fetch(
             `https://corsproxy.io/?https://api.deezer.com/search?q=${encodeURIComponent(
-              searchQuery
-            )}`
+              searchQuery,
+            )}`,
           );
           const data = await res.json();
 
@@ -96,20 +98,21 @@ export function HomePage({
 
       fetchMusics();
     },
-    [query]
+    [query],
   );
   useEffect(() => {
     setMusics((prevMusics) =>
       prevMusics.map((music) => ({
         ...music,
         liked: liked.some((likedSong) => likedSong.poster === music.poster),
-      }))
+      })),
     );
   }, [liked]);
 
   return (
     <div>
-      <NavBar query={query} setQuery={setQuery} />
+      <NavBar query={query} setQuery={setQuery} topArtist={topArtist} />
+
       <div className="main-container">
         <Sidebar
           currentlyPlaying={currentlyPlaying}
@@ -172,7 +175,7 @@ function MainPage({
                 music.poster,
                 music.title,
                 music.artist,
-                music.preview
+                music.preview,
               );
               handleLikeButton(music.id);
             }}
