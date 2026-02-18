@@ -519,3 +519,53 @@ body {
     display: block;
   }
 }
+
+/* MOBILE PLAYER */
+
+.mobile-player-mini {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: #181818;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  color: white;
+  z-index: 999;
+}
+
+.mobile-player-mini img {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+}
+
+.mobile-player-full {
+  position: fixed;
+  inset: 0;
+  background: #121212;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.mobile-full-poster {
+  width: 260px;
+  border-radius: 14px;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+}
