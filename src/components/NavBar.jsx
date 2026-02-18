@@ -24,6 +24,7 @@ export function NavBar({ query, setQuery, topArtist }) {
       </div>
 
       <div className={`nav ${menuOpen ? "nav-open" : ""}`}>
+        <NavLink to="/">Home</NavLink>
         <NavLink to="/liked" onClick={() => setMenuOpen(false)}>
           Liked
         </NavLink>
