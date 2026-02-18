@@ -28,7 +28,6 @@ export function NavBar({ query, setQuery, topArtist }) {
         <NavLink to="/liked" onClick={() => setMenuOpen(false)}>
           Liked
         </NavLink>
-
         <NavLink to="/playlist" onClick={() => setMenuOpen(false)}>
           Playlist
         </NavLink>
