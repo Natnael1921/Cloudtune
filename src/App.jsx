@@ -6,7 +6,7 @@ import Liked from "./pages/Liked";
 import PlayList from "./pages/PlayList";
 import { useLocalStorage } from "./useLocalStorage";
 export default function App() {
-  const tempPoster = "public/disk-removebg-preview.png";
+  const tempPoster = "/disk-removebg-preview.png";
   const [liked, setLiked] = useLocalStorage([],"liked");
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   const [currentPoster, setCurrentPoster] = useState(tempPoster);

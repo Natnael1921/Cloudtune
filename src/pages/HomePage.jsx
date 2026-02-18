@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
 import { CurrentlyPlaying } from "../components/CurrentlyPlaying";
 
-const topArtist = [
-  { poster: "public/Eminem.jpg", name: "Eminem" },
-  { poster: "public/Rihanna.jpg", name: "Rihanna" },
-  { poster: "public/Drake.jpg", name: "Drake" },
-  { poster: "public/Weeknd.jpg", name: "The Weeknd" },
-  { poster: "public/Travis.webp", name: "Travis Scott" },
-  { poster: "public/Kendrick.jpg", name: "Kendrick lamar" },
-  { poster: "public/Adele.jpg", name: "Adele" },
+export const topArtist = [
+  { poster: "/Eminem.jpg", name: "Eminem" },
+  { poster: "/Rihanna.jpg", name: "Rihanna" },
+  { poster: "/Drake.jpg", name: "Drake" },
+  { poster: "/Weeknd.jpg", name: "The Weeknd" },
+  { poster: "/Travis.webp", name: "Travis Scott" },
+  { poster: "/Kendrick.jpg", name: "Kendrick lamar" },
+  { poster: "/Adele.jpg", name: "Adele" },
 ];
 
 export function HomePage({
@@ -49,8 +49,8 @@ export function HomePage({
   function handleLikeButton(id) {
     setMusics((prev) =>
       prev.map((music) =>
-        music.id === id ? { ...music, liked: !music.liked } : music
-      )
+        music.id === id ? { ...music, liked: !music.liked } : music,
+      ),
     );
   }
 
@@ -66,8 +66,8 @@ export function HomePage({
 
         const res = await fetch(
           `https://corsproxy.io/?https://api.deezer.com/search?q=${encodeURIComponent(
-            searchQuery
-          )}`
+            searchQuery,
+          )}`,
         );
 
         const data = await res.json();
@@ -97,7 +97,7 @@ export function HomePage({
       prev.map((music) => ({
         ...music,
         liked: liked.some((l) => l.poster === music.poster),
-      }))
+      })),
     );
   }, [liked]);
 
@@ -152,7 +152,7 @@ export function HomePage({
   );
 }
 
-//  MAIN PAGE 
+//  MAIN PAGE
 function MainPage({
   musics,
   handlePlay,
@@ -170,7 +170,12 @@ function MainPage({
           <span
             className={music.liked ? "liked-button" : "not-liked-button"}
             onClick={() => {
-              handleLiked(music.poster, music.title, music.artist, music.preview);
+              handleLiked(
+                music.poster,
+                music.title,
+                music.artist,
+                music.preview,
+              );
               handleLikeButton(music.id);
             }}
           >
@@ -181,13 +186,13 @@ function MainPage({
 
           {currentlyPlaying === music.preview ? (
             <img
-              src={isPlaying ? "public/play.png" : "public/pause.png"}
+              src={isPlaying ? "/play.png" : "/pause.png"}
               className="corner-image"
               onClick={() => handlePlayPause(music)}
             />
           ) : (
             <img
-              src="public/pause.png"
+              src="/pause.png"
               className="corner-image"
               onClick={() => {
                 handlePlay(music.preview);
@@ -201,7 +206,7 @@ function MainPage({
   );
 }
 
-//  LOADER 
+//  LOADER
 function Loader() {
   return (
     <div className="loader">
@@ -235,11 +240,11 @@ export function Sidebar({
 
       <div className="top-artists-container">
         <strong className="header">Top Artists</strong>
-        {topArtist.map((artist, index) => (
+        {(topArtist || []).map((artist, index) => (
           <div
             key={index}
             className="top-artists"
-            onClick={() => setQuery(artist.name)}
+            onClick={() => setQuery && setQuery(artist.name)}
           >
             <img src={artist.poster} className="artist-image" />
             <p className="artist-name">{artist.name}</p>

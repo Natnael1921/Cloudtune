@@ -7,7 +7,7 @@ export function NavBar({ query, setQuery, topArtist }) {
   return (
     <nav className="nav-bar">
       <div className="logo">
-        <img src="public/logo.png" className="logo-image" />
+        <img src="/logo.png" className="logo-image" />
         <p className="logo-text">Cloudtune</p>
       </div>
 

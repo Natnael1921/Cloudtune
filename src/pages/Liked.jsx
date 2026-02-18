@@ -1,7 +1,6 @@
 import { NavBar } from "../components/NavBar";
 import { Sidebar } from "./HomePage";
-
-
+import { topArtist } from "./HomePage"; 
 export default function Liked({
   liked,
   handlePlay,
@@ -18,7 +17,7 @@ export default function Liked({
   }
   return (
     <div>
-      <NavBar />
+      <NavBar topArtist={[]} />
 
       <div>
         <div className="sidebar-liked">
@@ -30,6 +29,7 @@ export default function Liked({
             handleLiked={() => {}}
             handleLikeButton={() => {}}
             likeButton={false}
+            topArtist={topArtist}
           />
         </div>
         <div className="liked-container">
@@ -49,13 +49,13 @@ export default function Liked({
                 {currentlyPlaying === music.preview ? (
                   !isPlaying ? (
                     <img
-                      src="public/pause.png "
+                      src="/pause.png "
                       className="liked-corner-image"
                       onClick={() => handlePlayPause(music)}
                     />
                   ) : (
                     <img
-                      src="public/play.png"
+                      src="/play.png"
                       className="liked-corner-image"
                       onClick={() => {
                         handlePlayPause(music);
@@ -64,7 +64,7 @@ export default function Liked({
                   )
                 ) : (
                   <img
-                    src="public/pause.png"
+                    src="/pause.png"
                     className="liked-corner-image"
                     onClick={() => {
                       handlePlayPause(music);
