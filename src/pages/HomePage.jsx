@@ -65,7 +65,7 @@ export function HomePage({
         const searchQuery = query || defaultQuery;
 
         const res = await fetch(
-          `https://corsproxy.io/?https://api.deezer.com/search?q=${encodeURIComponent(
+          `https://cloudtune-server.onrender.com/api/search?q=${encodeURIComponent(
             searchQuery,
           )}`,
         );
